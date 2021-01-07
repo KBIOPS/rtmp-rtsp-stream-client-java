@@ -66,8 +66,8 @@ public class RtmpConnection implements RtmpPublisher {
   private int transactionIdCounter = 0;
   private int videoWidth;
   private int videoHeight;
-  private int videoLat;
-  private int videoLng;
+  private String videoLat;
+  private String videoLng;
   private final ConnectCheckerRtmp connectCheckerRtmp;
   //for secure transport
   private boolean tlsEnabled;
@@ -736,7 +736,7 @@ public class RtmpConnection implements RtmpPublisher {
   }
 
   @Override
-  public void setGpsLocation(int lat, int lng) {
+  public void setGpsLocation(String lat, String lng) {
     videoLat = lat;
     videoLng = lng;
     Log.d(TAG, "setGpsLocation: lat/lng" +lat+"/"+lng);

@@ -58,7 +58,7 @@ public interface RtmpPublisher {
    */
   void setVideoResolution(int width, int height);
 
-  void setGpsLocation(int lat, int lng);
+  void setGpsLocation(String lat, String lng);
 
   void setAuthorization(String user, String password);
 

@@ -192,7 +192,7 @@ public class SrsFlvMuxer {
     publisher.setVideoResolution(width, height);
   }
 
-  public void setGpsLocation(int lat, int lng) {
+  public void setGpsLocation(String lat, String lng) {
     publisher.setGpsLocation(lat, lng);
   }
 

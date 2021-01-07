@@ -3,7 +3,6 @@ package com.pedro.rtplibrary.util;
 /**
  * Created by pedro on 11/07/19.
  */
-// BitrateAdapter
 public class BitrateAdapter {
 
   public interface Listener {

@@ -47,7 +47,7 @@ public class DefaultRtmpPublisher implements RtmpPublisher {
   }
 
   @Override
-  public void setGpsLocation(int lat, int lng){
+  public void setGpsLocation(String lat, String lng){
     rtmpConnection.setGpsLocation(lat, lng);
   }
 
