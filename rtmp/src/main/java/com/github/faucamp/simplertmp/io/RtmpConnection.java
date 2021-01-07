@@ -732,14 +732,12 @@ public class RtmpConnection implements RtmpPublisher {
   public void setVideoResolution(int width, int height) {
     videoWidth = width;
     videoHeight = height;
-    Log.d(TAG, "setVideoResolution: h/w"+height+"/"+width);
   }
 
   @Override
   public void setGpsLocation(String lat, String lng) {
     videoLat = lat;
     videoLng = lng;
-    Log.d(TAG, "setGpsLocation: lat/lng" +lat+"/"+lng);
   }
 
   @Override
