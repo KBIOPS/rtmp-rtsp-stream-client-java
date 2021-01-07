@@ -66,6 +66,8 @@ public class RtmpConnection implements RtmpPublisher {
   private int transactionIdCounter = 0;
   private int videoWidth;
   private int videoHeight;
+  private int videoLat;
+  private int videoLng;
   private final ConnectCheckerRtmp connectCheckerRtmp;
   //for secure transport
   private boolean tlsEnabled;
@@ -348,6 +350,8 @@ public class RtmpConnection implements RtmpPublisher {
     ecmaArray.setProperty("duration", 0);
     ecmaArray.setProperty("width", videoWidth);
     ecmaArray.setProperty("height", videoHeight);
+    ecmaArray.setProperty("latitude", videoLat);
+    ecmaArray.setProperty("longitude", videoLng);
     ecmaArray.setProperty("videocodecid", 7);
     ecmaArray.setProperty("framerate", 30);
     ecmaArray.setProperty("videodatarate", 0);
@@ -728,6 +732,14 @@ public class RtmpConnection implements RtmpPublisher {
   public void setVideoResolution(int width, int height) {
     videoWidth = width;
     videoHeight = height;
+    Log.d(TAG, "setVideoResolution: h/w"+height+"/"+width);
+  }
+
+  @Override
+  public void setGpsLocation(int lat, int lng) {
+    videoLat = lat;
+    videoLng = lng;
+    Log.d(TAG, "setGpsLocation: lat/lng" +lat+"/"+lng);
   }
 
   @Override

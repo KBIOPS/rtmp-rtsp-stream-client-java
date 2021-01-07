@@ -497,6 +497,7 @@ public abstract class Camera2Base implements GetAacData, GetVideoData, GetMicrop
     }
   }
 
+  protected abstract void startStreamRtp(String url, int lat, int lng);
   protected abstract void startStreamRtp(String url);
 
   /**
@@ -509,6 +510,17 @@ public abstract class Camera2Base implements GetAacData, GetVideoData, GetMicrop
    * @startPreview to resolution seated in @prepareVideo. If you never startPreview this method
    * startPreview for you to resolution seated in @prepareVideo.
    */
+  public void startStream(String url, int lat, int lng) {
+    streaming = true;
+    if (!recordController.isRunning()) {
+      startEncoders();
+    } else {
+      resetVideoEncoder();
+    }
+    startStreamRtp(url, lat, lng);
+    onPreview = true;
+  }
+
   public void startStream(String url) {
     streaming = true;
     if (!recordController.isRunning()) {
@@ -519,6 +531,7 @@ public abstract class Camera2Base implements GetAacData, GetVideoData, GetMicrop
     startStreamRtp(url);
     onPreview = true;
   }
+
 
   private void startEncoders() {
     videoEncoder.start();

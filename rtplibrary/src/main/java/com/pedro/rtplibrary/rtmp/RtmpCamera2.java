@@ -156,6 +156,18 @@ public class RtmpCamera2 extends Camera2Base {
   }
 
   @Override
+  protected void startStreamRtp(String url, int lat, int lng) {
+    if (videoEncoder.getRotation() == 90 || videoEncoder.getRotation() == 270) {
+      srsFlvMuxer.setVideoResolution(videoEncoder.getHeight(), videoEncoder.getWidth());
+      srsFlvMuxer.setGpsLocation(lat, lng);
+    } else {
+      srsFlvMuxer.setVideoResolution(videoEncoder.getWidth(), videoEncoder.getHeight());
+      srsFlvMuxer.setGpsLocation(lat, lng);
+    }
+    srsFlvMuxer.start(url);
+  }
+
+  @Override
   protected void stopStreamRtp() {
     srsFlvMuxer.stop();
   }

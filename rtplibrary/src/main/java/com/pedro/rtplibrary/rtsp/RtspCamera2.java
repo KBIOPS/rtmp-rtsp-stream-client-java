@@ -148,6 +148,11 @@ public class RtspCamera2 extends Camera2Base {
   }
 
   @Override
+  protected void startStreamRtp(String url, int lat, int lng) {
+    rtspClient.connect(url);
+  }
+
+  @Override
   protected void stopStreamRtp() {
     rtspClient.disconnect();
   }

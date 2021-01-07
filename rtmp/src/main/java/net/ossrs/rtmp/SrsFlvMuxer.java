@@ -192,6 +192,10 @@ public class SrsFlvMuxer {
     publisher.setVideoResolution(width, height);
   }
 
+  public void setGpsLocation(int lat, int lng) {
+    publisher.setGpsLocation(lat, lng);
+  }
+
   private void disconnect(ConnectCheckerRtmp connectChecker) {
     try {
       publisher.close();
