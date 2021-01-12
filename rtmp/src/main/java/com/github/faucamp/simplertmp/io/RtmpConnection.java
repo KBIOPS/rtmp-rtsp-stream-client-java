@@ -79,6 +79,7 @@ public class RtmpConnection implements RtmpPublisher {
   private String netConnectionDescription;
   private final BitrateManager bitrateManager;
   private boolean isEnableLogs = true;
+  private Object addlMetaData;
 
   public RtmpConnection(ConnectCheckerRtmp connectCheckerRtmp) {
     this.connectCheckerRtmp = connectCheckerRtmp;
@@ -738,5 +739,9 @@ public class RtmpConnection implements RtmpPublisher {
 
   public void setLogs(boolean enable) {
     isEnableLogs = enable;
+  }
+
+  public void addMetaData(Object kvp) {
+    addlMetaData = kvp;
   }
 }

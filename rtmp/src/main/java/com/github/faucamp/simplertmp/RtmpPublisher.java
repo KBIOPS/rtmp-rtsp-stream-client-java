@@ -61,4 +61,6 @@ public interface RtmpPublisher {
   void setAuthorization(String user, String password);
 
   void setLogs(boolean enable);
+
+  void addMetaData(Object kvp);
 }
