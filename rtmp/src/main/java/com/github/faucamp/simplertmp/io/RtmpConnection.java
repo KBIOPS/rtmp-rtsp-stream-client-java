@@ -32,6 +32,9 @@ import java.util.regex.Pattern;
 import net.ossrs.rtmp.BitrateManager;
 import net.ossrs.rtmp.ConnectCheckerRtmp;
 import net.ossrs.rtmp.CreateSSLSocket;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Main RTMP connection implementation class
@@ -363,6 +366,24 @@ public class RtmpConnection implements RtmpPublisher {
     ecmaArray.setProperty("audiodatarate", 0);
     ecmaArray.setProperty("stereo", true);
     ecmaArray.setProperty("filesize", 0);
+
+    if (addlMetaData instanceof JSONObject) {
+      try {
+        JSONObject jsonMetaData = (JSONObject) addlMetaData;
+        JSONArray keys = jsonMetaData.names();
+
+        if (keys != null) {
+          for (int i = 0; i < keys.length(); i++) {
+            String key = keys.getString(i);
+            String value = jsonMetaData.getString(key);
+            ecmaArray.setProperty(key, value);
+          }
+        }
+      } catch (JSONException | NullPointerException e) {
+        Log.getStackTraceString(e);
+      }
+    }
+
     metadata.addData(ecmaArray);
     sendRtmpPacket(metadata);
   }
