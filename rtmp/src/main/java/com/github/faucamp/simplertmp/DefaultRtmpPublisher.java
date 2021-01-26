@@ -55,4 +55,9 @@ public class DefaultRtmpPublisher implements RtmpPublisher {
   public void setLogs(boolean enable) {
     rtmpConnection.setLogs(enable);
   }
+
+  @Override
+  public void addMetaData(Object kvp) {
+    rtmpConnection.addMetaData(kvp);
+  }
 }

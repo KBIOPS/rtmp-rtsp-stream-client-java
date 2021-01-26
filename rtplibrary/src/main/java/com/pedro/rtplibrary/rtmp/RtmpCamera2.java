@@ -199,5 +199,10 @@ public class RtmpCamera2 extends Camera2Base {
   public void setLogs(boolean enable) {
     srsFlvMuxer.setLogs(enable);
   }
+
+  @Override
+  public void addMetaData(Object kvp) {
+    srsFlvMuxer.addMetaData(kvp);
+  }
 }
 

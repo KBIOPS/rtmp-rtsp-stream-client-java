@@ -911,4 +911,6 @@ public abstract class Camera2Base implements GetAacData, GetVideoData, GetMicrop
   }
 
   public abstract void setLogs(boolean enable);
+
+  public abstract void addMetaData(Object kvp);
 }
